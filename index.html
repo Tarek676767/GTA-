@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA PLUS+</title>
+
+<style>
+@font-face {
+    font-family: Pricedown;
+    src: url("pricedown.ttf");
+}
+
+:root {
+    --bg: #080b14;
+    --box: #101827;
+    --cyan: #00eaff;
+    --purple: #9b5cff;
+    --pink: #ff3cac;
+    --text: #e8edf2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, #00eaff12, transparent 35%),
+        radial-gradient(circle at 80% 70%, #9b5cff12, transparent 35%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #080b14ee;
+    border-bottom: 1px solid #00eaff33;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-family: Pricedown, Arial, sans-serif;
+    font-size: 32px;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.logo span {
+    color: var(--pink);
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-family: Pricedown, Arial, sans-serif;
+    font-size: clamp(50px, 10vw, 110px);
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient 5s infinite linear;
+    filter: drop-shadow(0 0 20px #9b5cff55);
+}
+
+@keyframes gradient {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.hero p {
+    color: #aab4c5;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.hero button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    border: 1px solid var(--cyan);
+    background: transparent;
+    color: var(--cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.hero button:hover {
+    background: var(--cyan);
+    color: #080b14;
+    box-shadow: 0 0 25px var(--cyan);
+}
+
+/* SECTION */
+
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    font-family: Pricedown, Arial, sans-serif;
+    font-size: 38px;
+    margin-bottom: 30px;
+    color: var(--cyan);
+    text-shadow: 0 0 12px #00eaff44;
+}
+
+/* GAME CARDS */
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--box);
+    border: 1px solid #1b3044;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 25px #00eaff22;
+}
+
+.card-image {
+    height: 200px;
+    background: linear-gradient(135deg, #101827, #22243b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    border-bottom: 1px solid #1b3044;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+    color: var(--cyan);
+}
+
+.card-content p {
+    color: #9ca8ba;
+    line-height: 1.6;
+}
+
+.card-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card-content button:hover {
+    background: var(--purple);
+    color: white;
+    box-shadow: 0 0 15px var(--purple);
+}
+
+/* CHEAT SECTION */
+
+.cheat-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.cheat-controls input,
+.cheat-controls select {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px;
+    background: var(--box);
+    color: white;
+    border: 1px solid #26374c;
+    border-radius: 8px;
+    outline: none;
+}
+
+.cheat-controls input:focus,
+.cheat-controls select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px #00eaff22;
+}
+
+.cheat-controls select option {
+    background: var(--box);
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #203246;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+thead {
+    background: #121d2d;
+}
+
+th {
+    color: var(--cyan);
+    padding: 18px;
+    text-align: left;
+}
+
+td {
+    padding: 16px;
+    border-top: 1px solid #1c2939;
+}
+
+tbody tr {
+    transition: .2s;
+}
+
+tbody tr:hover {
+    background: #00eaff08;
+}
+
+.code {
+    color: var(--pink);
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.copy-btn {
+    background: transparent;
+    color: var(--cyan);
+    border: 1px solid #00eaff66;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.copy-btn:hover {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+#noResults {
+    text-align: center;
+    padding: 30px;
+    color: var(--pink);
+    display: none;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #00eaff22;
+    color: #78879b;
+}
+
+footer span {
+    color: var(--cyan);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">GTA <span>PLUS+</span></div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#cheats">Cheats</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+    <h1>GTA PLUS+</h1>
+    <p>The ultimate Grand Theft Auto cheats collection.</p>
+    <button onclick="document.getElementById('cheats').scrollIntoView()">
+        Explore Cheats
+    </button>
+</div>
+
+<!-- GAMES -->
+
+<section id="games">
+
+    <h2 class="section-title">Games</h2>
+
+    <div class="games">
+
+        <div class="card">
+            <div class="card-image">
+                <!-- ADD YOUR IMAGE HERE -->
+                <img src="v.jpg">
+            </div>
+            <div class="card-content">
+                <h3>GTA V</h3>
+                <p>Explore Los Santos and discover all the cheats.</p>
+                <button onclick="filterGame('GTA V')">View Cheats</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <!-- ADD YOUR IMAGE HERE -->
+                <img src="gta4.jpg">
+            </div>
+            <div class="card-content">
+                <h3>GTA IV</h3>
+                <p>Liberty City phone cheats and secrets.</p>
+                <button onclick="filterGame('GTA IV')">View Cheats</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <!-- ADD YOUR IMAGE HERE -->
+                <img src="sa.jpeg">
+            </div>
+            <div class="card-content">
+                <h3>San Andreas</h3>
+                <p>Classic cheat codes for CJ and San Andreas.</p>
+                <button onclick="filterGame('San Andreas')">View Cheats</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <!-- ADD YOUR IMAGE HERE -->
+                <img src="vc.jpeg">
+            </div>
+            <div class="card-content">
+                <h3>Vice City</h3>
+                <p>Weapons, vehicles and classic Vice City cheats.</p>
+                <button onclick="filterGame('Vice City')">View Cheats</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <!-- ADD YOUR IMAGE HERE -->
+                <img src="gta3.jpg">
+            </div>
+            <div class="card-content">
+                <h3>GTA III</h3>
+                <p>Discover the classic Liberty City cheat codes.</p>
+                <button onclick="filterGame('GTA III')">View Cheats</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CHEATS -->
+
+<section id="cheats">
+
+    <h2 class="section-title">Cheat Codes</h2>
+
+    <div class="cheat-controls">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search cheat, code or game..."
+        >
+
+        <select id="gameFilter">
+            <option value="all">All Games</option>
+            <option value="GTA V">GTA V</option>
+            <option value="GTA IV">GTA IV</option>
+            <option value="San Andreas">San Andreas</option>
+            <option value="Vice City">Vice City</option>
+            <option value="GTA III">GTA III</option>
+        </select>
+
+    </div>
+
+    <div class="table-container">
+
+        <table id="cheatTable">
+
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Cheat</th>
+                    <th>Code</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- GTA V -->
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Invincibility</td>
+                    <td class="code">PAINKILLER</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Max Health & Armor</td>
+                    <td class="code">TURTLE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Raise Wanted Level</td>
+                    <td class="code">FUGITIVE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Lower Wanted Level</td>
+                    <td class="code">LAWYERUP</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Fast Run</td>
+                    <td class="code">CATCHME</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA V</td>
+                    <td>Explosive Melee</td>
+                    <td class="code">HOTHANDS</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <!-- GTA IV -->
+
+                <tr>
+                    <td>GTA IV</td>
+                    <td>Health & Armor</td>
+                    <td class="code">362-555-0100</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA IV</td>
+                    <td>Weapons 1</td>
+                    <td class="code">486-555-0150</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA IV</td>
+                    <td>Weapons 2</td>
+                    <td class="code">486-555-0100</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA IV</td>
+                    <td>Remove Wanted Level</td>
+                    <td class="code">267-555-0100</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <!-- SAN ANDREAS -->
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Weapon Set 1</td>
+                    <td class="code">LXGIWYL</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Weapon Set 2</td>
+                    <td class="code">KJKSZPJ</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Weapon Set 3</td>
+                    <td class="code">UZUMYMW</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Health & Armor & Money</td>
+                    <td class="code">HESOYAM</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Infinite Ammo</td>
+                    <td class="code">WANRLTW</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>San Andreas</td>
+                    <td>Clear Wanted Level</td>
+                    <td class="code">ASNAEB</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <!-- VICE CITY -->
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Full Health</td>
+                    <td class="code">ASPIRINE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Weapon Set 1</td>
+                    <td class="code">THUGSTOOLS</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Weapon Set 2</td>
+                    <td class="code">PROFESSIONALTOOLS</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Weapon Set 3</td>
+                    <td class="code">NUTTERTOOLS</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Full Armor</td>
+                    <td class="code">PRECIOUSPROTECTION</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>Vice City</td>
+                    <td>Clear Wanted Level</td>
+                    <td class="code">LEAVemeALONE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <!-- GTA III -->
+
+                <tr>
+                    <td>GTA III</td>
+                    <td>Full Health</td>
+                    <td class="code">GESUNDHEIT</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA III</td>
+                    <td>All Weapons</td>
+                    <td class="code">GUNSGUNSGUNS</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA III</td>
+                    <td>Full Armor</td>
+                    <td class="code">TURTOISE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+                <tr>
+                    <td>GTA III</td>
+                    <td>Raise Wanted Level</td>
+                    <td class="code">MOREPOLICEPLEASE</td>
+                    <td><button class="copy-btn">Copy</button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div id="noResults">No cheats found.</div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>GTA <span>PLUS+</span> &copy; 2026 | Website Made-by Tito </p>
+</footer>
+
+<script>
+
+/* SEARCH */
+
+const searchInput = document.getElementById("search");
+const gameFilter = document.getElementById("gameFilter");
+const rows = document.querySelectorAll("#cheatTable tbody tr");
+const noResults = document.getElementById("noResults");
+
+function filterTable() {
+
+    const searchValue = searchInput.value.toLowerCase();
+    const selectedGame = gameFilter.value;
+
+    let visibleCount = 0;
+
+    rows.forEach(function(row) {
+
+        const text = row.textContent.toLowerCase();
+        const game = row.cells[0].textContent;
+
+        const matchesSearch = text.includes(searchValue);
+        const matchesGame = selectedGame === "all" || game === selectedGame;
+
+        if (matchesSearch && matchesGame) {
+            row.style.display = "";
+            visibleCount++;
+        } else {
+            row.style.display = "none";
+        }
+
+    });
+
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", filterTable);
+gameFilter.addEventListener("change", filterTable);
+
+
+/* GAME CARD FILTER */
+
+function filterGame(game) {
+
+    gameFilter.value = game;
+    searchInput.value = "";
+    filterTable();
+
+    document.getElementById("cheats").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* COPY CHEATS */
+
+document.querySelectorAll(".copy-btn").forEach(function(button) {
+
+    button.addEventListener("click", async function() {
+
+        const code = button.parentElement.previousElementSibling.textContent.trim();
+
+        try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = "Copied!";
+        } catch {
+            button.textContent = "Failed";
+        }
+
+        setTimeout(function() {
+            button.textContent = "Copy";
+        }, 1500);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
